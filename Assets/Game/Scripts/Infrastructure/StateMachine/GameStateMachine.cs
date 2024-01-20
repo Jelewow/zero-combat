@@ -18,7 +18,7 @@ namespace ZeroCombat.Infrastructure
             _states = new Dictionary<Type, IExitableState>
             {
                 [typeof(BootstrapState)] = new BootstrapState(this, sceneLoader, allServices ),
-                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, loadingCurtain, allServices.Single<IGameFactory>()),
+                [typeof(LoadLevelState)] = new LoadLevelState(this, sceneLoader, loadingCurtain, allServices.Single<IGameFactory>(), allServices.Single<IPersistantProgressService>()),
                 [typeof(LoadProgressState)] = new LoadProgressState(this, allServices.Single<IPersistantProgressService>(), allServices.Single<ISaveLoadService>()),
                 [typeof(GameLoopState)] = new GameLoopState(this),
             };

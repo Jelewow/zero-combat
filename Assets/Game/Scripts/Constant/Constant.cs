@@ -45,5 +45,10 @@ namespace ZeroCombat.Constants
                 public static readonly int Speed = UnityEngine.Animator.StringToHash("Speed");
             }
         }
+
+        public static class Prefs
+        {
+            public const string Progress = nameof(Progress);
+        }
     }
 }

@@ -7,9 +7,9 @@ namespace ZeroCombat.Data
     {
         public WorldData WorldData;
 
-        public PlayerProgress(string main)
+        public PlayerProgress(string sceneName)
         {
-            
+            WorldData = new WorldData(sceneName);
         }
     }
 }

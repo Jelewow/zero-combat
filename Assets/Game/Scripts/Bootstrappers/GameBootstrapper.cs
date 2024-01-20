@@ -8,11 +8,11 @@ namespace ZeroCombat.Bootstrapper
     {
         [SerializeField] private LoadingCurtain _loadingCurtain;
         
-        private Infrastructure.Game _game;
+        private Game _game;
         
         private void Awake()
         {
-            _game = new Infrastructure.Game(this, _loadingCurtain);
+            _game = new Game(this, Instantiate(_loadingCurtain));
             _game.StateMachine.Enter<BootstrapState>();
             
             DontDestroyOnLoad(this);

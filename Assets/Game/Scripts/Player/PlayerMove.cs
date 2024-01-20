@@ -1,8 +1,8 @@
-﻿using Game.Scripts.Extensions;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using ZeroCombat.Constants;
 using ZeroCombat.Data;
+using ZeroCombat.Extensions;
 using ZeroCombat.Infrastructure.Services;
 using ZeroCombat.Services.Input;
 
@@ -50,14 +50,14 @@ namespace ZeroCombat.Player
                 return;
             }
             
-            var savedPosition = progress.WorldData.PositionOnLevel.Position;
+            Vector3Data savedPosition = progress.WorldData.PositionOnLevel.Position;
             Warp(savedPosition);
         }
 
         private void Warp(Vector3Data to)
         {
             _characterController.enabled = false;
-            transform.position = to.AsUnityVector3();
+            transform.position = to.AsUnityVector3().AddY(_characterController.height);
             _characterController.enabled = true;
         }
 

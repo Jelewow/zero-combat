@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using ZeroCombat.Data;
 
-namespace Game.Scripts.Extensions
+namespace ZeroCombat.Extensions
 {
     public static class DataExtension
     {
@@ -14,5 +14,15 @@ namespace Game.Scripts.Extensions
         {
             return new Vector3(vector3Data.X, vector3Data.Y, vector3Data.Z);
         }
+
+        public static Vector3 AddY(this Vector3 vector3, float y)
+        {
+            vector3.y += y;
+            return vector3;
+        }
+        
+        public static T ToDeserialized<T>(this string json) => JsonUtility.FromJson<T>(json);
+
+        public static string ToJson(this object obj) => JsonUtility.ToJson(obj);
     }
 }

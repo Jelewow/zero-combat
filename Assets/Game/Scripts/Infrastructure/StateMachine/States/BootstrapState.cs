@@ -35,15 +35,16 @@ namespace ZeroCombat.Infrastructure
         
         private void EnterLoadLevel()
         {
-            _stateMachine.Enter<LoadLevelState, string>(Constant.Scenes.Main);
+            _stateMachine.Enter<LoadProgressState>();
         }
 
         private void RegisterServices()
         {
             _services.RegisterSingle<IInputService>(RegisterInputService());
             _services.RegisterSingle<IAssetProvider>(new AssetProvider.AssetProvider());
-            _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssetProvider>()));
             _services.RegisterSingle<IPersistantProgressService>(new PersistantProgressService());
+            _services.RegisterSingle<IGameFactory>(new GameFactory(_services.Single<IAssetProvider>()));
+            _services.RegisterSingle<ISaveLoadService>(new SaveLoadService(_services.Single<IPersistantProgressService>(), _services.Single<IGameFactory>()));
         }
 
         private static IInputService RegisterInputService()

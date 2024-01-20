@@ -18,8 +18,7 @@ namespace ZeroCombat.Infrastructure
         }
 
         public void Exit()
-        {
-            
+        { 
         }
 
         public void Enter()
